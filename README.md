@@ -52,22 +52,40 @@
 
 
 ## 安装
-- **IOS AppStore**: （搜索关键词：clash mi）
-  - https://apps.apple.com/us/app/clash-mi/id6744321968
-- **IOS TestFlight**:
-  - https://testflight.apple.com/join/bjHXktB3
-- **MacOS/Android/Windows/Linux**:
+- 本项目当前仅保留 Windows 平台代码。
+- **Windows**:
   - https://clashmi.app/download
   - https://github.com/KaringX/clashmi/releases/latest
 
 
 ### 系统要求
 
-- IOS >= 15
-- MacOS >= 12 (Intel, Apple Silicon)
-- Android >= 8  (arm64-v8a, armeabi-v7a)
 - Windows >= 10 （amd64）
-- Linux （amd64）
+
+### 示例
+
+下面的示例展示如何用内置的 Demo 逻辑生成一个 V2Ray(VMess) 节点配置，并读取已上传/已下载流量：
+
+```dart
+final detail = NodeDetail.fromJson({
+  'v': '2',
+  'ps': 'us',
+  'add': 'example.com',
+  'port': '443',
+  'id': 'e36865f9-6cf1-31c5-b402-79e45cfb63cf',
+  'aid': '0',
+  'scy': 'auto',
+  'net': 'ws',
+  'type': 'none',
+  'host': 'example.com',
+  'path': '/ws',
+  'tls': 'tls',
+  'sni': 'example.com',
+});
+
+final yaml = NodeDemoManager.buildClashProfileYaml(detail);
+final totals = await NodeDemoManager.getUsedTrafficTotals();
+```
 
 ### 常见问题
 
@@ -102,4 +120,3 @@
 - [Karing](https://karing.app): https://karing.app
 - [Clash Mi](https://clashmi.app/): https://clashmi.app/
 - [sing-poet](https://github.com/KaringX/sing-poet)
-
