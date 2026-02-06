@@ -1,122 +1,83 @@
-<h1 align="center">
-  <img src="./assets/demo/icon_256.png" alt="Clash Mi" width="256" />
-  <br>
-  Clash Mi - 又一款mihomo核心的代理工具
-  <br>
-</h1>
+# Clash Mi (Windows)
 
-<h3 align="center">
-基于 <a href="https://github.com/flutter/flutter">flutter</a> 的 <a href="https://github.com/MetaCubeX/mihomo">mihomo(clash.meta)</a> 图形用户界面。
-</h3>
+本项目当前仅保留 Windows 平台代码。下面说明如何在 Windows 上正确配置与运行项目，以及常见问题的处理方式。
 
+## 环境准备
 
-## 特点
-- 内置Mihomo内核
-    - 基于最新且持续更新的Mihomo(Clash.Meta)内核. 内核及客户端均持续更新维护，放心使用.
-- 操作简单
-    - 支持metacubex的推荐配置, 内核基于yaml配置运行. 小白用户使用机场订阅即可使用.
-- 自带[zashboard面板](https://github.com/Zephyruso/zashboard)
-    - web面板 或许你更加熟悉.
-- 官网/用户手册: [clashmi.app](https://clashmi.app)
+1. 安装 [Flutter SDK](https://flutter.dev/docs/get-started/install/windows)（建议使用稳定版）。
+2. 安装 Git。
+3. 安装 Visual Studio 2022（勾选“使用 C++ 的桌面开发”工作负载）。
+4. 在 PowerShell 中确认 Flutter 环境：
 
-##### 注意: 
-- **Clash Mi或KaringX未在任何视频平台开设过任何频道**
-- [Clash Mi唯一官网](https://clashmi.app): https://clashmi.app
-	- **请勿相信其他网址提供的信息、下载二次打包的软件**
-
-## 推广
-<details>
-<summary>查看所有推广
-
-
-
-### ✈️推荐机场
-
-[🐶狗狗加速 —— 技术流机场 Doggygo VPN](https://1.x31415926.top/redir.html?url=aHR0cHM6Ly93d3cuZGc2LnRvcC8jL3JlZ2lzdGVyP2NvZGU9bEZINGlpOUQ=&i=3eb&t=1723644053)
-
-- 高性能海外机场，海外团队，无跑路风险
-- 专属链接注册送 3 天，每天 1G 流量 [免费试用](https://1.x31415926.top/redir.html?url=aHR0cHM6Ly93d3cuZGc2LnRvcC8jL3JlZ2lzdGVyP2NvZGU9bEZINGlpOUQ=&i=3eb&t=1723644053)
-- 优惠套餐每月仅需 15.8 元，160G 流量，年付 8 折
-- 全球首家支持`Hysteria2` 协议，集群负载均衡设计，高速专线，极低延迟，无视晚高峰，4K 秒开
-- 解锁流媒体及 ChatGPT
-
-[👉更多机场优惠 每日更新](https://1.x31415926.top/)
-
-</summary>
-
-### 🤝机场合作招募
-- 👉[联系方式与合作形式](https://karing.app/blog/isp/cooperation)👈
-</details>
-
-
-
-
-## 安装
-- 本项目当前仅保留 Windows 平台代码。
-- **Windows**:
-  - https://clashmi.app/download
-  - https://github.com/KaringX/clashmi/releases/latest
-
-
-### 系统要求
-
-- Windows >= 10 （amd64）
-
-### 示例
-
-下面的示例展示如何用内置的 Demo 逻辑生成一个 V2Ray(VMess) 节点配置，并读取已上传/已下载流量：
-
-```dart
-final detail = NodeDetail.fromJson({
-  'v': '2',
-  'ps': 'us',
-  'add': 'example.com',
-  'port': '443',
-  'id': 'e36865f9-6cf1-31c5-b402-79e45cfb63cf',
-  'aid': '0',
-  'scy': 'auto',
-  'net': 'ws',
-  'type': 'none',
-  'host': 'example.com',
-  'path': '/ws',
-  'tls': 'tls',
-  'sni': 'example.com',
-});
-
-final yaml = NodeDemoManager.buildClashProfileYaml(detail);
-final totals = await NodeDemoManager.getUsedTrafficTotals();
+```powershell
+flutter doctor -v
 ```
 
-### 常见问题
+确保 `Windows` 相关检查项通过。
 
-> [FAQ|cn](https://clashmi.app/guide/faq)
+## 获取代码
 
+```powershell
+git clone https://github.com/KaringX/clashmi.git
+cd clashmi
+```
 
-### 截图
+## 依赖安装
 
-<div align="center">
-  <img src="./assets/demo/home.png" alt="app: home" width="50%" />
-  </br></br>
-</div>
+```powershell
+flutter pub get
+```
 
-## 提交需求/bug
-- [欢迎报告bug及需求！](https://github.com/KaringX/clashmi/issues)
-- [ClashMiApp 电报群](https://t.me/ClashMiApp)
+## 运行项目
 
+1. 确保当前仅运行 Windows 目标：
 
-## 捐赠
-- [请开发者喝一杯](https://clashmi.app/donate)
+```powershell
+flutter config --enable-windows-desktop
+flutter devices
+```
 
-## Projects 
+2. 运行：
 
-### 致谢: Clash Mi 基于或受到这些项目的启发：
+```powershell
+flutter run -d windows
+```
 
-- [flutter](https://flutter.dev/)：使构建美观应用变得轻松快捷.
-- [mihomo](https://github.com/MetaCubeX/mihomo)：另一款 clash核心.
-- [zashboard](https://github.com/Zephyruso/zashboard): 使用 Clash API 的仪表板.
+## 常见问题
 
+### 1. `flutter doctor` 提示 Windows 工具链缺失
 
-### Karing Team:
-- [Karing](https://karing.app): https://karing.app
-- [Clash Mi](https://clashmi.app/): https://clashmi.app/
-- [sing-poet](https://github.com/KaringX/sing-poet)
+请安装 Visual Studio 2022，并在安装器中勾选：
+- “使用 C++ 的桌面开发”
+- Windows 10/11 SDK
+
+重新打开终端后执行：
+
+```powershell
+flutter doctor -v
+```
+
+### 2. 运行时提示权限不足或无法启动服务
+
+请使用 **管理员权限** 打开终端，再执行：
+
+```powershell
+flutter run -d windows
+```
+
+### 3. 防火墙提示阻止
+
+允许程序通过防火墙，或在管理员终端中重新运行程序以自动配置端口规则。
+
+### 4. 运行时提示配置/缓存目录异常
+
+尝试清理缓存后重试：
+
+```powershell
+flutter clean
+flutter pub get
+```
+
+### 5. 端口被占用
+
+默认端口被占用时，请关闭相关进程或调整配置后再启动。
