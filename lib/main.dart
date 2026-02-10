@@ -20,7 +20,7 @@ import 'package:clashmi/app/utils/platform_utils.dart';
 import 'package:clashmi/app/utils/system_scheme_utils.dart';
 import 'package:clashmi/app/utils/windows_version_helper.dart';
 import 'package:clashmi/i18n/strings.g.dart';
-import 'package:clashmi/screens/home_screen.dart';
+import 'package:clashmi/screens/simple_home_screen.dart';
 import 'package:clashmi/screens/launch_failed_screen.dart';
 import 'package:clashmi/screens/theme_data_dark.dart';
 import 'package:clashmi/screens/themes.dart';
@@ -273,10 +273,6 @@ class MyAppState extends State<MyApp>
 
   @override
   Widget build(BuildContext context) {
-    String schemeArg = processArgs.firstWhere((element) {
-      return element.trim().startsWith(SystemSchemeUtils.getClashSchemeWith());
-    }, orElse: () => '');
-
     List<NavigatorObserver> observers = [];
 
     observers.add(AppRouteObserver.instance);
@@ -311,7 +307,7 @@ class MyAppState extends State<MyApp>
                         startFailedReason: startFailedReason!,
                         startFailedReasonDesc: startFailedReasonDesc,
                       )
-                    : HomeScreen(launchUrl: schemeArg.trim()),
+                    : const SimpleHomeScreen(),
               ),
               builder: SettingManager.getConfig().ui.disableFontScaler
                   ? (context, widget) {
